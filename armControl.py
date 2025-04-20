@@ -89,12 +89,19 @@ def tap():
 
 def money():
     cmd = [
-    'python', 'lerobot/scripts/control_robot.py',
-    '--robot.type=so100',
-    '--control.type=replay',
-    '--control.fps=30',
-    '--control.repo_id=vednot25t/money',
-    '--control.episode=0'
+    "python", "lerobot/scripts/control_robot.py",
+    "--robot.type=so100",
+    "--control.type=record",
+    "--control.fps=30",
+    '--control.single_task=Grasp two cards at a time and place them in a cup on the side',
+    f"--control.repo_id=vednot25t/eval_act_so100_test2",
+    '--control.tags=["so100","card_cup"]',
+    "--control.warmup_time_s=5",
+    "--control.episode_time_s=30",
+    "--control.reset_time_s=30",
+    "--control.num_episodes=1",
+    "--control.push_to_hub=false",
+    "--control.policy.path=/home/ved/.cache/huggingface/hub/models--vednot25t--s0100_test/snapshots/18980f8d4615cda0da3c380f6c13d75bf2311a01"
     ]
     subprocess.run(cmd)
 
