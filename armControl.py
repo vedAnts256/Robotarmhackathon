@@ -219,7 +219,6 @@ def determine_winner(my_hole: list[str], opp_hole: list[str], table: list[str]) 
 # ------------------------------------------------------------------------------
 
 def play_hand():
-    # 1) My hole cards
     print("capture_image: my_hole")
     lookatcards()
     time.sleep(0.5)
@@ -255,6 +254,8 @@ def play_hand():
     time.sleep(0.5)
 
     # 4) River
+    lookattable()
+    time.sleep(0.5)
     river_img = capture_image("river")
     table += detect_cards(river_img)
     if not should_proceed(my_hole, table):
@@ -265,6 +266,8 @@ def play_hand():
     print("→ Play to showdown!")
 
     # 5) Opponent's hole cards
+    lookattable()
+    time.sleep(0.5)
     opp_img = capture_image("opp_hole")
     opp_hole = detect_cards(opp_img)
 
@@ -276,7 +279,6 @@ def play_hand():
         print("😞 Opponent wins.")
     else:
         print("🤝 It's a tie!")
-
 # ------------------------------------------------------------------------------
 # Entry point
 # ------------------------------------------------------------------------------
